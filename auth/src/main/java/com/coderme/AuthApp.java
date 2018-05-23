@@ -7,18 +7,16 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 /**
  * @author qiudm
- * @date 2018/5/21 21:58
+ * @date 2018/5/23 19:19
  * @desc
  */
-@SpringBootApplication
 @EnableDiscoveryClient
-//@EnableFeignClients
-public class FaqApp {
-
+@SpringBootApplication
+@EnableFeignClients//开启fegin远程调用其他服务
+public class AuthApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(FaqApp.class, args);
+        SpringApplication.run(AuthApp.class, args);
     }
-
 
 }

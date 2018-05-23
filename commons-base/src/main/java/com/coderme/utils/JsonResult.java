@@ -18,6 +18,8 @@ public class JsonResult extends JSONObject {
     private static final int ERROR = 500;
 
 
+    public JsonResult(){}
+
     public JsonResult(int resultCode, String resultMsg) {
         setResultCode(resultCode);
         setResultMsg(resultMsg);

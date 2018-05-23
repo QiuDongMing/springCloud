@@ -1,24 +1,34 @@
 package com.coderme.controller;
 
+import com.coderme.service.remote.FaqService;
 import com.coderme.utils.JsonResult;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author qiudm
- * @date 2018/5/22 20:12
+ * @date 2018/5/23 19:19
  * @desc
  */
 @RestController
 @RequestMapping("test")
 public class TestController {
 
+    @Autowired
+    private FaqService faqService;
 
     @GetMapping("test")
     public JsonResult test() {
-        return JsonResult.SUCCESS("faq test");
+        return JsonResult.SUCCESS("auth test");
     }
+
+    @GetMapping("faqTest")
+    public JsonResult faqTest() {
+        return faqService.test();
+    }
+
+
 
 }
