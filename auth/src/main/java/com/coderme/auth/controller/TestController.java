@@ -1,6 +1,5 @@
-package com.coderme.controller;
-
-import com.coderme.service.remote.FaqService;
+package com.coderme.auth.controller;
+import com.coderme.auth.service.remote.FaqService;
 import com.coderme.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

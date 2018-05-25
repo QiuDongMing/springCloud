@@ -1,4 +1,4 @@
-package com.coderme.service.remote;
+package com.coderme.auth.service.remote;
 
 import com.coderme.utils.JsonResult;
 import org.springframework.cloud.netflix.feign.FeignClient;

@@ -1,7 +1,6 @@
-package com.coderme.controller;
+package com.coderme.faq.controller;
 
 import com.coderme.utils.JsonResult;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,5 +19,15 @@ public class TestController {
     public JsonResult test() {
         return JsonResult.SUCCESS("faq test");
     }
+
+
+    public void test2(String name, Integer age, String str) {
+
+        String s = str;
+    }
+
+
+
+
 
 }
