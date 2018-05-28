@@ -15,8 +15,9 @@
     <module>commons-base</module>
     <module>faq</module>
     <module>auth</module>
+    <module>demo-test</module>
+    <module>gateway</module>
   </modules>
-
 
 
   <parent>

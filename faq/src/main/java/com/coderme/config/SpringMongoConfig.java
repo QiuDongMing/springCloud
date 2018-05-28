@@ -22,10 +22,10 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 public class SpringMongoConfig  {
 
 
-    @Value("${spring.datasource.mongo.url}")
+    @Value("${mongo.url}")
     private String mongoUri;
 
-    @Value("${spring.datasource.mongo.database}")
+    @Value("${mongo.database}")
     private String dbName;
 
     @Bean(name="mongoTemplate")

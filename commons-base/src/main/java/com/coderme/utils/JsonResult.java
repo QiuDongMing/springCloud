@@ -31,6 +31,20 @@ public class JsonResult extends JSONObject {
         setData(data);
     }
 
+    public JsonResult(int resultCode, String resultMsg, String detailMsg) {
+        setResultCode(resultCode);
+        setResultMsg(resultMsg);
+        setDetailMsg(detailMsg);
+    }
+
+    public JsonResult(int resultCode, String resultMsg, String detailMsg, Object data) {
+        setResultCode(resultCode);
+        setResultMsg(resultMsg);
+        setDetailMsg(detailMsg);
+        setData(data);
+    }
+
+
 
 
     public static JsonResult SUCCESS(String resultMsg) {
@@ -55,10 +69,17 @@ public class JsonResult extends JSONObject {
     }
 
 
+    public static JsonResult RESULT(int resultCode, String resultMsg, String detailMsg) {
+        return new JsonResult(resultCode, resultMsg, detailMsg);
+    }
+
+    public static JsonResult RESULT(int resultCode, String resultMsg, String detailMsg, Object data) {
+        return new JsonResult(resultCode, resultMsg, detailMsg, data);
+    }
+
     public static JsonResult ERROR(Exception e) {
         return new JsonResult(ERROR, "服务器繁忙", e.getMessage());
     }
-
 
 
     public Object getResultCode() {
@@ -77,6 +98,14 @@ public class JsonResult extends JSONObject {
         put("resultMsg", resultMsg);
     }
 
+    public String getDetailMsg() {
+        return getString("detailMsg");
+    }
+
+    public void setDetailMsg(String detailMsg) {
+        put("detailMsg", detailMsg);
+    }
+
     public Object getData() {
         return get("data");
     }
@@ -84,4 +113,7 @@ public class JsonResult extends JSONObject {
     public void setData(Object data) {
         put("data", data);
     }
+
+
+
 }
