@@ -1,6 +1,6 @@
 package com.coderme.faq.controller;
 
-import com.coderme.utils.JsonResult;
+import com.coderme.commons.base.utils.JsonResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

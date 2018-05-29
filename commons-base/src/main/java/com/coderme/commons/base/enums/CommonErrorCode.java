@@ -5,7 +5,7 @@ package com.coderme.commons.base.enums;
  * @date 2018/5/29 14:15
  * @desc
  */
-public enum CommonErrorCodes {
+public enum CommonErrorCode {
     SUCCESS(1, "成功"),
     FAILURE(0, "失败"),
     ACCOUNT_NOT_EXIST(100100, "账户不存在");
@@ -14,7 +14,7 @@ public enum CommonErrorCodes {
     private int code;
     private String desc;
 
-    private CommonErrorCodes(int code, String desc) {
+    CommonErrorCode(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }

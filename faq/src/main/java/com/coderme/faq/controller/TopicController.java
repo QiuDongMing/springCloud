@@ -1,7 +1,7 @@
 package com.coderme.faq.controller;
 
 import com.coderme.faq.controller.param.TopicParam;
-import com.coderme.utils.JsonResult;
+import com.coderme.commons.base.utils.JsonResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

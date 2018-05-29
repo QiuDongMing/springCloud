@@ -6,4 +6,19 @@ package com.coderme.demo.enums;
  * @desc
  */
 public class AccountEnum {
+
+    public enum AccountType {
+        tel,
+        wechat;
+    }
+
+
+    public static void main(String[] args) {
+
+        System.out.println("AccountType.tel.name() = " + AccountType.tel.name());
+
+    }
+
+
+
 }

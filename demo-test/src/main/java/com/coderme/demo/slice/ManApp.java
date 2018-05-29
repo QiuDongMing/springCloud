@@ -1,7 +1,5 @@
 package com.coderme.demo.slice;
 
-import com.alibaba.fastjson.JSON;
-import com.coderme.utils.BeanUtil;
 import org.junit.Test;
 
 /**
@@ -17,8 +15,8 @@ public class ManApp {
         Dog d = new Dog();
         d.setId("dog1");
         d.setName("dog");
-        Animal animal = BeanUtil.copy(d, Animal.class);
-        System.out.println("animal = " + JSON.toJSONString(animal));
+      //  Animal animal = BeanUtil.copy(d, Animal.class);
+//        System.out.println("animal = " + JSON.toJSONString(animal));
     }
 
 

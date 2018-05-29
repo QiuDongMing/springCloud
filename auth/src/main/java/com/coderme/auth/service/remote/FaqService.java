@@ -1,6 +1,6 @@
 package com.coderme.auth.service.remote;
 
-import com.coderme.utils.JsonResult;
+import com.coderme.commons.base.utils.JsonResult;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @date 2018/5/23 19:34
  * @desc
  */
-@FeignClient(value = "FAQ")
+//@FeignClient(value = "FAQ")
 public interface FaqService {
 
-    @GetMapping("test/test")
-    JsonResult test();
+//    @GetMapping("test/test")
+//    JsonResult test();
 
 }

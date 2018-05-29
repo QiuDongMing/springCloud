@@ -6,4 +6,19 @@ package com.coderme.demo.rebuild;
  * @desc
  */
 public class A {
+
+    public void methold(AParam AParam) {
+
+
+    }
+
+
+    public void methold2() {
+        String name = "a";
+        Integer age = 10;
+        methold(new AParam(name, age));
+    }
+
+
+
 }
