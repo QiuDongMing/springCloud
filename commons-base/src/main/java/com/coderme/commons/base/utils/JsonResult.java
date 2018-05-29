@@ -1,4 +1,4 @@
-package com.coderme.utils;
+package com.coderme.commons.utils;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -8,13 +8,10 @@ import com.alibaba.fastjson.JSONObject;
  * @desc
  */
 public class JsonResult extends JSONObject {
-
     private static final long serialVersionUID = 1L;
 
-    private static final int SUCCESS = 0;
-
-    private static final int FAILURE = 1;
-
+    private static final int SUCCESS = 1;
+    private static final int FAILURE = 0;
     private static final int ERROR = 500;
 
 
@@ -43,8 +40,6 @@ public class JsonResult extends JSONObject {
         setDetailMsg(detailMsg);
         setData(data);
     }
-
-
 
 
     public static JsonResult SUCCESS(String resultMsg) {
