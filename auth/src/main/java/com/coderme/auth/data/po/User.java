@@ -1,4 +1,4 @@
-package com.coderme.user.center.data.po;
+package com.coderme.auth.data.po;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

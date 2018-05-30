@@ -2,7 +2,6 @@ eureka-server:  1111
 gateway:        8080
 faq:            8081
 auth:           8082
-user-center     8083
 
 
 devxx01
