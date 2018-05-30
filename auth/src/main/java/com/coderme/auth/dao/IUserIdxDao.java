@@ -9,10 +9,10 @@ package com.coderme.auth.dao;
 public interface IUserIdxDao {
 
 
-    String nextUserId();
+    String nextUserId(Integer userType);
 
 
-    void initUserIdx();
+    void initUserIdx(Integer userType);
 
 
 }

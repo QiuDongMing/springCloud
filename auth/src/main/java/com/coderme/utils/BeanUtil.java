@@ -1,4 +1,4 @@
-package com.coderme.commons.base.utils;
+package com.coderme.utils;
 
 import org.springframework.beans.BeanUtils;
 

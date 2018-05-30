@@ -2,12 +2,14 @@ package com.coderme.auth.dao.impl;
 
 import com.coderme.auth.dao.IUserIdxDao;
 import com.coderme.auth.data.po.UserIdx;
+import com.coderme.auth.enums.UserEnums;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+import com.coderme.auth.enums.UserEnums.*;
 
 import java.util.Objects;
 
@@ -23,8 +25,9 @@ public class UserIdxDaoImpl implements IUserIdxDao {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public String nextUserId() {
-        Query query = new Query(Criteria.where("_id").is(1));
+    public String nextUserId(Integer userType) {
+        initUserIdx(userType);
+        Query query = new Query(Criteria.where("_id").is(userType));
         Update update = new Update();
         update.inc("userId", 1);
         UserIdx userIdx = mongoTemplate.findAndModify(query, update, UserIdx.class);
@@ -33,13 +36,19 @@ public class UserIdxDaoImpl implements IUserIdxDao {
 
 
     @Override
-    public void initUserIdx() {
-        UserIdx userIdx = mongoTemplate.findById(1, UserIdx.class);
+    public void initUserIdx(Integer userType) {
+        UserIdx userIdx = mongoTemplate.findById(userType, UserIdx.class);
         if (Objects.isNull(userIdx)) {
             userIdx = new UserIdx();
-            userIdx.setId(1);
-            userIdx.setUserId(100001);
-            userIdx.setDesc("用户id自增");
+            userIdx.setId(userType);
+            if(Objects.equals(userType, UserType.COMMON_USER.getType())) {
+                userIdx.setUserId(1000000);
+                userIdx.setDesc("用户id自增");
+            }
+            if(Objects.equals(userType, UserType.SYS_USER.getType())) {
+                userIdx.setUserId(10000);
+                userIdx.setDesc("管理员id自增");
+            }
             mongoTemplate.insert(userIdx);
         }
     }

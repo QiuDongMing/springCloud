@@ -20,7 +20,7 @@ package com.coderme.commons.base.utils;
  */
 public class IDGenerator {
 
-    static IDGenerator idWorker = new IDGenerator(1, 0);
+    public static IDGenerator idWorker = new IDGenerator(1, 0);
     // ==============================Fields===========================================
     /**
      * 开始时间截 (2015-01-01)
