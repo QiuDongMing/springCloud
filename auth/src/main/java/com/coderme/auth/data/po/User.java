@@ -27,6 +27,11 @@ public class User {
     private String password;
 
     /**
+     * openId 对外
+     */
+    private String openId;
+
+    /**
      * 用户类型
      * @see com.coderme.auth.enums.UserEnums.UserType
      */
@@ -141,6 +146,18 @@ public class User {
     }
 
     public void setRegistTime(Long registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    public void setRegisterTime(Long registerTime) {
         this.registerTime = registerTime;
     }
 }

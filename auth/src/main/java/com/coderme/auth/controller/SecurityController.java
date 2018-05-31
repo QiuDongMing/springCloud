@@ -1,5 +1,6 @@
 package com.coderme.auth.controller;
 
+import com.coderme.auth.controller.param.LoginParam;
 import com.coderme.auth.controller.param.RegisterParam;
 import com.coderme.auth.service.ISecurityService;
 import com.coderme.commons.base.utils.JsonResult;
@@ -20,11 +21,20 @@ public class SecurityController {
     @Autowired
     private ISecurityService securityService;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public JsonResult register(@RequestBody @Valid RegisterParam param) {
         securityService.register(param);
-        return JsonResult.SUCCESS("success");
+        return JsonResult.SUCCESS();
     }
+
+    @PostMapping("/login")
+    public JsonResult login(@RequestBody LoginParam param) {
+        return JsonResult.SUCCESS(securityService.login(param));
+    }
+
+
+
+
 
 
 }

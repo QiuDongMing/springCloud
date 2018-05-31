@@ -1,6 +1,5 @@
 package com.coderme.auth.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.coderme.auth.dao.IUserDao;
 import com.coderme.auth.data.base.BasicUserInfo;
 import com.coderme.auth.data.po.User;
@@ -10,14 +9,9 @@ import com.coderme.utils.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
 import java.util.Objects;
 
-import static com.coderme.auth.constans.CacheKey.AUTH_BASIC_USER_INFO;
 
 /**
  * @author qiudm
