@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.coderme.auth.enums.UserEnums.*;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -66,16 +67,16 @@ public class SecurityServiceImpl implements ISecurityService {
 
     @Override
     public AccessToken login(LoginParam param) {
-
-
+        List<String> allAccountTypes = AccountType.getAllType();
+        if (!allAccountTypes.contains(param.getAccountType())) {
+            throw new ServiceException("登录账户类型异常");
+        }
 
         AccessToken accessToken = new AccessToken();
         String token = StringUtils.randomUUID();
         cacheService.cacheLoginUserToken(token, Expire.MONTH, accessToken);
         return accessToken;
     }
-
-
 
 
 }

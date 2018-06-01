@@ -17,6 +17,7 @@
     <module>auth</module>
     <module>demo-test</module>
     <module>gateway</module>
+    <module>commons-util-mq</module>
   </modules>
 
 
