@@ -15,11 +15,23 @@ public class ListTest {
 
     @Test
     public void testList() {
-        List<String> stringList = Lists.newArrayList();
-        for (String k : stringList) {
-            System.out.println("k = " + k);
 
-        }
+
+//
+//        List<String> stringList = Lists.newArrayList();
+//        for (String k : stringList) {
+//            System.out.println("k = " + k);
+//
+//        }
+        String s = "1529060102397";
+
+        System.out.println("Long.valueOf(s) = " + Long.valueOf(s));
+
+
+
     }
+
+
+
 
 }
