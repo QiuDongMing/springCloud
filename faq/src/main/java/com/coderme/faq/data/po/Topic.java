@@ -18,6 +18,7 @@ public class Topic {
 
     private String title;
 
+    private Long createTime;
 
     public String getId() {
         return id;
@@ -41,5 +42,13 @@ public class Topic {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 }

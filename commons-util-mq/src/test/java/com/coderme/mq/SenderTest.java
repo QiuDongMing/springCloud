@@ -1,5 +1,4 @@
 package com.coderme.mq;
-import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -13,14 +12,16 @@ import org.junit.Test;
 public class SenderTest {
 
 
-    private String userName = "";
-    private String password = "";
-    private String virtualHost = "";
-    private String hostName = "";
-    private int portNumber = 0;
+    private String userName = "qdm";
+    private String password = "123456";
+    private String virtualHost = "/";
+    private String hostName = "192.168.56.101";
+    private int portNumber = 5672;
 
-    private String exchangeName = "";
-    private String routingKey = "";
+    private String exchangeName = "exchange1";
+    private String routingKey = "exchange1";
+
+    private String QUENUE_NAME = "quenueName1";
 
 
     @Test
@@ -31,17 +32,19 @@ public class SenderTest {
         factory.setVirtualHost(virtualHost);
         factory.setHost(hostName);
         factory.setPort(portNumber);
+        factory.setAutomaticRecoveryEnabled(true);
+        factory.setNetworkRecoveryInterval(30000);
         Connection conn = null;
         Channel channel = null;
         try {
+
             conn = factory.newConnection();
             channel = conn.createChannel();
+            channel.queueDeclare(QUENUE_NAME, false, false, false, null);
 
-            channel.exchangeDeclare(exchangeName, "direct", true);
-            String queueName = channel.queueDeclare().getQueue();
-            channel.queueBind(queueName, exchangeName, routingKey);
-            Byte[] b = new Byte[125];
-
+            byte[] messageBodyBytes = "Hello, world!".getBytes();
+            channel.basicPublish(exchangeName, routingKey, null, messageBodyBytes);
+            Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
