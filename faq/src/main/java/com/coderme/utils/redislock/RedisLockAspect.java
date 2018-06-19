@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author qiudm
@@ -24,7 +25,7 @@ import java.util.Objects;
 public class RedisLockAspect {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Pointcut("@annotation(com.coderme.utils.redislock.RedisLock)")
     public void redisLockPoint() {
@@ -40,21 +41,18 @@ public class RedisLockAspect {
         Object[] args = pjp.getArgs();
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
         redisKey += getRedisKey(parameterAnnotations, args);
-        String redisValue = redisTemplate.opsForValue().get(redisKey);
-        System.out.println("redisValue = -" + redisValue + "-");
-        long expireTime = redisLock.expireTime() * 1000;
+        String redisValue = stringRedisTemplate.opsForValue().get(redisKey);
 
         if (Objects.isNull(redisValue)) {
-            Long redisValueSet = System.currentTimeMillis() + expireTime;
-            System.out.println("redisKey = " + redisKey +":val=" + String.valueOf(redisValueSet)
-                    + "expireTime=" + expireTime);
-            redisTemplate.opsForValue().set(redisKey, String.valueOf(redisValueSet), expireTime);
+            Long redisValueSet = System.currentTimeMillis() + redisLock.expireTime() * 1000;
+            String redisVal = String.valueOf(redisValueSet);
+            stringRedisTemplate.opsForValue().set(redisKey, redisVal, redisLock.expireTime(), TimeUnit.SECONDS);
             object = pjp.proceed();
         } else {
             Long redisExpireValue = Long.valueOf(redisValue);
             if (Objects.nonNull(redisExpireValue)) {
                 if (System.currentTimeMillis() > redisExpireValue) {
-                    redisTemplate.delete(redisKey);
+                    stringRedisTemplate.delete(redisKey);
                 }
             }
             throw new ServiceException(redisLock.msg());

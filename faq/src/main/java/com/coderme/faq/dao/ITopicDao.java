@@ -1,6 +1,7 @@
 package com.coderme.faq.dao;
 
 
+import com.coderme.commons.base.utils.PageVO;
 import com.coderme.faq.data.po.Topic;
 
 import java.util.Map;
@@ -18,4 +19,5 @@ public interface ITopicDao {
 
     void update(String id, Map<String, Object> updateFiledMaps, Class<?> clazz);
 
+    PageVO<Topic> findList(Integer pageIndex, Integer pageSize);
 }

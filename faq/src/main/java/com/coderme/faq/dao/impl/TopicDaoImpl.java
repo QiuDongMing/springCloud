@@ -1,13 +1,16 @@
 package com.coderme.faq.dao.impl;
 
+import com.coderme.commons.base.utils.PageVO;
 import com.coderme.faq.dao.ITopicDao;
 import com.coderme.faq.data.po.Topic;
+import com.sun.corba.se.impl.oa.toa.TOA;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -31,7 +34,7 @@ public class TopicDaoImpl extends BaseDaoImpl implements ITopicDao {
 
     @Override
     public void update(String id, Map<String, Object> updateFiledMaps, Class<?> clazz) {
-        if(Objects.isNull(id) || CollectionUtils.isEmpty(updateFiledMaps)) {
+        if (Objects.isNull(id) || CollectionUtils.isEmpty(updateFiledMaps)) {
             return;
         }
         Criteria criteria = new Criteria("_id").is(id);
@@ -40,4 +43,15 @@ public class TopicDaoImpl extends BaseDaoImpl implements ITopicDao {
         mongoTemplate.findAndModify(new Query(criteria), update, clazz);
     }
 
+    @Override
+    public PageVO<Topic> findList(Integer pageIndex, Integer pageSize) {
+
+        Query query = new Query();
+        query.limit(pageSize);
+        query.skip((pageIndex - 1) * pageSize);
+        List<Topic> topics = mongoTemplate.find(query, Topic.class);
+        Long count = mongoTemplate.count(query, Topic.class);
+
+        return new PageVO<>(pageIndex, pageSize, count.intValue(), topics);
+    }
 }
