@@ -5,5 +5,5 @@ auth:           8082
 user-center     8083
 
 
-devxx01 dev
+devxx{dev modify}01 dev
 dev01 add
