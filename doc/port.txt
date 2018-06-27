@@ -6,4 +6,5 @@ spring-mq       8083
 config-center   8084
 
 
-devxx01
+devx{master modify}x01
+master add
