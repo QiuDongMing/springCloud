@@ -2,9 +2,8 @@ eureka-server:  1111
 gateway:        8080
 faq:            8081
 auth:           8082
-spring-mq       8083
+user-center     8083
 config-center   8084
 
 
-devx{master modify}x01
-master add
+devxx01 merge master dev to master
