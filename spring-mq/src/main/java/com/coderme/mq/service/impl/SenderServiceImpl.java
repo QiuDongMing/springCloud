@@ -20,7 +20,7 @@ public class SenderServiceImpl implements SenderService {
     public void send(int count) {
         for (int i=0; i <count;i++) {
             String msg = "msg" + i;
-            template.convertAndSend("queue2", msg);
+            template.convertAndSend("queuexx", msg);
         }
 
     }
